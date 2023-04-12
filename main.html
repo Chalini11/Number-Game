@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumberGame</title>
+</head>
+<body>
+    <h1>NUMBER GAME</h1>
+    <div class="container">
+        <div class="side">
+            <button class="menu" style="border-style:solid" onclick="RandNo()">
+                START
+            </button>
+            
+            <button class="menu" onclick="setLevel(1)">LEVEL 1</button>
+            <button class="menu" onclick="setLevel(2)">LEVEL 2</button>
+            <button class="menu" onclick="setLevel(3)">LEVEL 3</button>
+           
+            
+
+        </div>
+        <div class="gameSide">
+            <button class="menu" style="border-style:solid" onclick="restart()">RESTART</button>
+            <br><br>
+            <p class="menu" id="score">SCORE 100</p>
+            
+        </div>
+       
+        <div class="panel">
+            <div>
+               <input id="answer" value="0" name="noBox" >
+            </div>
+            
+            <div class="menuPanel" style="background-color: rgb(48, 163, 163);font-size: small; ">
+
+                <span id="turn" value="0"></span>
+            </div>
+            <div class="menuPanel"  style="background-color: rgb(230, 230, 230);height:2cm;">
+                <span id="result"></span>
+            </div>
+            <button id="clickme" onclick="generate()">GUESS</button>
+            
+
+            </div>
+            <div id="win">
+                <p>CONGRATULATIONS ON YOUR WIN</p>
+                <h4>🎊🎊🎊🎊🎊🎊🎊</h4>
+            </div>
+            <span id="levelDisplay"></span>
+            <span id="lives">❣️❣️❣️</span>
+          
+        </div>
+    </div>
+    
+
+<script>
+    var number=0;
+    var level=1;
+    var turns=0;
+    function setLevel(l)
+    {
+         level=l;
+         document.getElementById("levelDisplay").innerHTML="LEVEL "+l;
+        
+
+    }
+    function getRandomInt(max) 
+    {
+        return Math.floor(Math.random() * max);
+    }
+    function RandNo()
+    {
+          document.getElementsByClassName("gameSide")[0].style.display="block";
+          document.getElementsByClassName("side")[0].style.display="none";
+          if(level == 1)
+            number = getRandomInt(50);
+          else if(level == 2)
+            number = getRandomInt(100);
+          else if(level == 3)
+            number = getRandomInt(170);
+          console.log(number,level);
+
+    }
+    function restart()
+    {
+        location.reload();   
+    }
+    function generate()
+    {
+        
+        turns = turns+1;
+        console.log(turns);
+        document.getElementById("turn").innerHTML="TURNS "+turns;
+        let user = (document.getElementById("answer").value);
+        console.log(number);
+        console.log(user);
+        if(user == number)
+             { document.getElementById("win").style.display="grid";
+             document.getElementsByClassName("panel")[0].style.display="none";
+             }
+        else if(user > number)
+             document.getElementById("result").innerHTML="TRY LESSER";
+        else if(user < number)
+             document.getElementById("result").innerHTML="TRY GREATER";
+        
+        if(turns > 5 && turns <=10)
+          {
+            document.getElementById("score").innerHTML="SCORE 70";
+            document.getElementById("lives").innerHTML="❣️❣️";
+          }
+        else if(turns > 10 && turns <=25)
+          {
+            document.getElementById("score").innerHTML="SCORE 40";
+            document.getElementById("lives").innerHTML="❣️";
+          }
+        else if(turns > 25 )
+          {
+            document.getElementById("score").innerHTML="SCORE 0";
+            window.alert("U LOST. JUST START AGAIN.")
+            
+          }
+
+    }
+</script>
+</body>
+</html>
