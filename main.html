@@ -53,8 +53,18 @@
             <span id="lives">❣️❣️❣️</span>
           
         </div>
+      <br>  
     </div>
-    
+    <div class="rules" style="padding: 10px; border: 1px dotted black;">
+      <h3 align="center" style="color: rgb(231, 225, 225);">RULES</h3>
+       <ul style="color: black;">
+        <li>LEVEL 1 : The range is from 0 to 50</li>
+        <li>LEVEL 2 : The range is from 0 to 100</li>
+        <li>LEVEL 3 : The range is from 0 to 170</li>
+        <li>For Every 5 turns you lose a life 😥😥 </li>
+        
+       </ul>
+    </div>
 
 <script>
     var number=0;
@@ -111,12 +121,12 @@
             document.getElementById("score").innerHTML="SCORE 70";
             document.getElementById("lives").innerHTML="❣️❣️";
           }
-        else if(turns > 10 && turns <=25)
+        else if(turns > 10 && turns <=15)
           {
             document.getElementById("score").innerHTML="SCORE 40";
             document.getElementById("lives").innerHTML="❣️";
           }
-        else if(turns > 25 )
+        else if(turns > 15 )
           {
             document.getElementById("score").innerHTML="SCORE 0";
             window.alert("U LOST. JUST START AGAIN.")
